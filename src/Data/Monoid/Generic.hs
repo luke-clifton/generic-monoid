@@ -21,12 +21,12 @@ import GHC.Generics
 -- | A newtype which allows you to using the @DerivingVia@ extension
 -- to reduce boilerplate.
 --
--- @@@
+-- @
 -- data X = X [Int] String
 --   deriving (Generic, Show)
 --   deriving Semigroup via GenericSemigroup X
 --   deriving Monoid    via GenericMonoid X
--- @@@
+-- @
 --
 -- Note: Do NOT attempt to @derive Semigroup via GenericMonoid@. That will lead
 -- to infinite recursion.
@@ -39,7 +39,7 @@ instance
     => Monoid (GenericMonoid a) where
     mempty = GenericMonoid genericMempty
 
--- | A generic @mempty@ function which works for product types where each
+-- | A generic @`mempty`@ function which works for product types where each
 -- contained type is itself a @`Monoid`@. It simply calls @`mempty`@ for
 -- each field.
 --

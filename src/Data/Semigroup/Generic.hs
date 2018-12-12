@@ -16,11 +16,11 @@ import GHC.Generics
 -- | A newtype which allows you to using the @DerivingVia@ extension
 -- to reduce boilerplate.
 --
--- @@@
+-- @
 -- data X = X [Int] String
 --   deriving (Generic, Show)
 --   deriving Semigroup via GenericSemigroup X
--- @@@
+-- @
 newtype GenericSemigroup a = GenericSemigroup a
 
 instance
