@@ -1,12 +1,8 @@
-{-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE StandaloneDeriving #-}
-{-# LANGUAGE DerivingVia #-}
 {-# LANGUAGE DataKinds #-}
-{-# LANGUAGE UndecidableInstances #-}
-{-# LANGUAGE TypeOperators #-}
-{-# LANGUAGE TypeSynonymInstances #-}
+{-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE UndecidableInstances #-}
 module Data.Monoid.Generic
     ( genericMappend
     , genericMempty
@@ -14,9 +10,9 @@ module Data.Monoid.Generic
     , GenericMonoid(..)
     ) where
 
-import GHC.TypeLits
 import Data.Semigroup.Generic
 import GHC.Generics
+import GHC.TypeLits
 
 -- | A newtype which allows you to using the @DerivingVia@ extension
 -- to reduce boilerplate.
@@ -32,7 +28,9 @@ import GHC.Generics
 -- to infinite recursion.
 newtype GenericMonoid a = GenericMonoid a
     deriving Show
-    deriving Semigroup via a
+
+instance Semigroup a => Semigroup (GenericMonoid a) where
+    GenericMonoid a <> GenericMonoid b = GenericMonoid $ a <> b
 
 instance
     (Semigroup a, Generic a, MemptyProduct (Rep a))
