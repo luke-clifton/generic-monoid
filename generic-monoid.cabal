@@ -1,5 +1,5 @@
 name:                generic-monoid
-version:             0.1.0.0
+version:             0.1.0.1
 synopsis:            Derive monoid instances for product types.
 description:         Using GHC's generics, allow for deriving `Monoid` and `Semigroup` instances for your product types.
 license:             BSD3
