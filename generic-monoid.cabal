@@ -12,6 +12,10 @@ build-type:          Simple
 extra-source-files:  ChangeLog.md
 cabal-version:       >=1.10
 
+source-repository head
+  type: git
+  location: https://github.com/luke-clifton/generic-monoid
+
 library
   exposed-modules:     Data.Semigroup.Generic, Data.Monoid.Generic
   build-depends:       base >=4.11 && <4.21
